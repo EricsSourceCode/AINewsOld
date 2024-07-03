@@ -5,8 +5,7 @@ recentfile1	C:\Eric\Main\AINewsOld\MainApp.java
 recentfile2	\Eric\Main\Docs\Notes.txt
 recentfile3	\Eric\Main\AINewsOld\MainWindow.java
 recentfile4	\Eric\Main\AINewsOld\WebSites.java
-recentfile5	\Eric\Main\AINewsOld\StrA.java
-recentfile6	\Eric\Main\AINewsOld\UTF8StrA.java
-recentfile7	\Eric\Main\AINewsOld\UTF8Strings.java
-recentfile8	\Eric\Main\AINewsOld\URLParse.java
-recentfile9	\Eric\Main\AINewsOld\URLFileDictionary.java
+recentfile5	\Eric\Main\AINewsOld\URLParse.java
+recentfile6	\Eric\Main\AINewsOld\URLFileDictionary.java
+recentfile7	\Eric\Main\AINewsOld\URLFile.java
+recentfile8	\Eric\Main\AINewsOld\HtmlFile.java

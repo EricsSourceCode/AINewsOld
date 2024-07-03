@@ -1,6 +1,7 @@
 // Copyright Eric Chauvin 2020 - 2024.
 
 
+
 // This is licensed under the GNU General
 // Public License (GPL).  It is the
 // same license that Linux has.
@@ -115,7 +116,9 @@ public class WebSites implements ActionListener,
 
   private void setupTimer()
     {
-    int delay = 1000 * 2;
+    // HTTP error 429 is too many requests.
+    // So slow it down.
+    int delay = 1000 * 3;
     getURLTimer = new Timer( delay, this );
     getURLTimer.start();
     mApp.showStatusAsync( "Timer started." );
@@ -157,6 +160,9 @@ public class WebSites implements ActionListener,
       urlDictionary.saveToFile();
       return;
       }
+
+    urlToGet = urlToGet.replace( new StrA( "\'" ),
+                                  StrA.Empty );
 
     // mApp.showStatusAsync( "\nurlToGet is:\n" + urlToGet );
     URLFile uFile = urlDictionary.getValue( urlToGet );
@@ -213,20 +219,25 @@ public class WebSites implements ActionListener,
 
   public void addURLsToFifo()
     {
-    // I want to get both Democrat and
-    // Republican news.  Train AI on each
-    // or both.
-
     urlFifo.setValue( new StrA(
          "https://www.msnbc.com/" ));
 
     urlFifo.setValue( new StrA(
                 "https://www.foxnews.com/" ));
 
+    // urlFifo.setValue( new StrA(
+    //    "https://coloradomtn.edu/" ));
+
+    // urlFifo.setValue( new StrA(
+    //   "https://www.leadvilleherald.com/" ));
+
+// Sheriff:
+//    urlFifo.setValue( new StrA(
+// "https://www.leadvilleherald.com/opinion/letters_to_editor/article_f12fd87c-0e32-11ed-94f1-ffc710522c1b.html"
+//       ));
 
     // Add it to isGoodFullFile() too.
     // _And_ URLParse.hasValidDomain()
-
 
     addEmptyFilesToFifo();
     }
@@ -262,7 +273,7 @@ public class WebSites implements ActionListener,
           continue;
 
         howMany++;
-        if( howMany > 100 )
+        if( howMany > 20 )
           break;
 
         mApp.showStatusAsync( "\nAdding to Fifo: (" +
@@ -279,11 +290,101 @@ public class WebSites implements ActionListener,
   private boolean isGoodFullFile( StrA in )
     {
     if( in.containsStrA( new StrA(
+        "/site/forms/" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+        "/users/admin/" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+        "/users/login/" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+        "/users/signup/" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+        "/classifieds/" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+        "/place_an_ad/" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+        "/ayuda-fund/" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+        ".php" )))
+      return false;
+
+
+    if( in.containsStrA( new StrA(
+        "apply.coloradomtn.edu" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+        "outlook.office.com" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+        ".alpinebank.com" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+        "&quot;" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+        "/." )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+        "application/pdf" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+      "coloradomtn.edu/download/" )))
+      return false;
+
+    if( in.endsWith( new StrA(
+           ".pdf" )))
+      return false;
+
+    if( in.endsWith( new StrA(
+           ".php" )))
+      return false;
+
+    if( in.endsWith( new StrA(
+           ".aspx" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+           "#" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+           "/../" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
+           "leadvilleherald.com" )))
+      return false;
+
+
+    if( in.containsStrA( new StrA(
+           "coloradomtn.edu/" )))
+      return false;
+
+    if( in.containsStrA( new StrA(
                        ".foxnews.com/" )))
       return true;
 
     if( in.containsStrA( new StrA(
-                       ".msnbc.com/" )))
+                        ".msnbc.com/" )))
       return true;
 
     return false;

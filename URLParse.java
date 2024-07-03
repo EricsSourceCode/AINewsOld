@@ -140,6 +140,8 @@ public class URLParse
 
     link = link.replace( HrefStart, StrA.Empty );
     link = link.replaceChar( '"', ' ' );
+    link = link.replace( new StrA( "\'" ),
+                                  StrA.Empty );
     link = link.cleanUnicodeField().trim();
     link = fixupLink( link );
     if( link.length() == 0 )
@@ -338,6 +340,66 @@ public class URLParse
   private boolean hasValidDomain( StrA link )
     {
     if( link.containsStrA( new StrA(
+        "/site/forms/" )))
+      return false;
+
+    if( link.containsStrA( new StrA(
+        "/users/admin/" )))
+      return false;
+
+    if( link.containsStrA( new StrA(
+        "/users/login/" )))
+      return false;
+
+    if( link.containsStrA( new StrA(
+        "/users/signup/" )))
+      return false;
+
+    if( link.containsStrA( new StrA(
+        "/classifieds/" )))
+      return false;
+
+    if( link.containsStrA( new StrA(
+        "/place_an_ad/" )))
+      return false;
+
+    if( link.containsStrA( new StrA(
+        "application/pdf" )))
+      return false;
+
+    if( link.containsStrA( new StrA(
+      "coloradomtn.edu/download/" )))
+      return false;
+
+    if( link.endsWith( new StrA(
+           ".pdf" )))
+      return false;
+
+    if( link.endsWith( new StrA(
+           ".php" )))
+      return false;
+
+    if( link.containsStrA( new StrA(
+           "&quot" )))
+      return false;
+
+    if( link.containsStrA( new StrA(
+           "/../" )))
+      return false;
+
+    if( link.endsWith( new StrA(
+           ".aspx" )))
+      return false;
+
+    if( link.containsStrA( new StrA(
+           "leadvilleherald.com" )))
+      return false;
+
+    if( link.containsStrA( new StrA(
+           "coloradomtn.edu/" )))
+      return false;
+
+    if( link.containsStrA( new StrA(
                        ".foxnews.com/" )))
       return true;
 
@@ -372,6 +434,12 @@ public class URLParse
 
   public boolean isBadLink( StrA link )
     {
+    if( !( baseURL.endsWith( 
+              new StrA( "foxnews.com/" )) ||
+           baseURL.endsWith( 
+              new StrA( "msnbc.com/" ))))
+      return true; // Don't want deeper levels.
+
     // wa.me is WhatsApp.
     // Messaging app owned by Facebook.
 

@@ -211,7 +211,7 @@ public class URLFileDictionary implements
     // mApp.showStatusAsync( "Read file: " + fileS );
     StrArray lines = fileS.splitChar( '\n' );
     final int last = lines.length();
-    StrA badS = new StrA( "radiationnetwork.net" );
+    StrA badS = new StrA( "/../" );
 
     for( int count = 0; count < last; count++ )
       {

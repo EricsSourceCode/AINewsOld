@@ -37,6 +37,7 @@ public class URLFile implements Serializable
   private StrA url = StrA.Empty;
   private StrA dateTime = StrA.Empty;
   private StrA anchorsPulled = new StrA( "f" );
+  private StrA urlFrom = StrA.Empty;
 
 
 
@@ -50,7 +51,6 @@ public class URLFile implements Serializable
     mApp = appToUse;
     dateTime = makeDateTime();
     }
-
 
 
   public URLFile( MainApp appToUse, StrA urlToUse )
@@ -72,7 +72,9 @@ public class URLFile implements Serializable
     title = titleToUse.cleanUnicodeField();
     fileName = makeNewFileName( url );
     dateTime = makeDateTime();
+    urlFrom = new StrA( "unknown" );
     }
+
 
 
 
@@ -135,6 +137,12 @@ public class URLFile implements Serializable
   public StrA getUrl()
     {
     return url;
+    }
+
+
+  public StrA getUrlFrom()
+    {
+    return urlFrom;
     }
 
 
@@ -213,6 +221,8 @@ public class URLFile implements Serializable
     sBld.appendChar( Markers.URLFileDelimit );
     sBld.appendStrA( anchorsPulled );
     sBld.appendChar( Markers.URLFileDelimit );
+    sBld.appendStrA( new StrA( "unknown" ));
+    sBld.appendChar( Markers.URLFileDelimit );
 
     return sBld.toStrA();
     }
@@ -236,6 +246,15 @@ public class URLFile implements Serializable
     fileName = fields.getStrAt( 2 );
     dateTime = fields.getStrAt( 3 );
     anchorsPulled = fields.getStrAt( 4 );
+
+    if( last < 6 )
+      {
+      urlFrom = new StrA( "unknown" );
+      }
+    else
+      {
+      urlFrom = fields.getStrAt( 5 );
+      }
     }
 
 

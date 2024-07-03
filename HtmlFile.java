@@ -1,16 +1,13 @@
 // Copyright Eric Chauvin 2020 - 2021.
 
 
-// =======
-
-
 
 public class HtmlFile
   {
   private MainApp mApp;
   private URLFileDictionary urlFileDictionary;
   private URLParse urlParse;
-  private StrA inURL = StrA.Empty;
+  private StrA fromURL = StrA.Empty;
   private StrA fileName = StrA.Empty;
   private StrA markedUpS = StrA.Empty;
   private StrA htmlS = StrA.Empty;
@@ -47,8 +44,8 @@ public class HtmlFile
                                    StrA fileNameToUse )
     {
     mApp = appToUse;
-    inURL = baseURL;
-    urlParse = new URLParse( mApp, baseURL );
+    fromURL = baseURL;
+    urlParse = new URLParse( mApp, fromURL );
     urlFileDictionary = useDictionary;
     fileName = fileNameToUse;
     }
@@ -177,7 +174,7 @@ public class HtmlFile
               mApp.showStatusAsync( "\n\nLinkText: " + linkText );
               mApp.showStatusAsync( "Link: " + link );
               URLFile uFile = new URLFile( mApp,
-                                     linkText, link );
+                                linkText, link );
               urlFileDictionary.setValue( link, uFile );
               }
             }
@@ -370,7 +367,7 @@ public class HtmlFile
 
       if( isInsideScript )
         {
-        if( inURL.toString().contains(
+        if( fromURL.toString().contains(
                         "coloradomtn.edu/" ))
           {
           ScrBuilder.append( "" + testC );

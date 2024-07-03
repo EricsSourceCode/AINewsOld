@@ -29,7 +29,7 @@ import java.io.IOException;
 class MainApp implements Runnable, Serializable
   {
   public static final String versionDate =
-                              "5/20/2024";
+                              "7/3/2024";
   public static final long serialVersionUID = 1;
 
 
