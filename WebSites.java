@@ -118,7 +118,7 @@ public class WebSites implements ActionListener,
     {
     // HTTP error 429 is too many requests.
     // So slow it down.
-    int delay = 1000 * 3;
+    int delay = 1000 * 4;
     getURLTimer = new Timer( delay, this );
     getURLTimer.start();
     mApp.showStatusAsync( "Timer started." );
@@ -273,7 +273,7 @@ public class WebSites implements ActionListener,
           continue;
 
         howMany++;
-        if( howMany > 20 )
+        if( howMany > 40 )
           break;
 
         mApp.showStatusAsync( "\nAdding to Fifo: (" +

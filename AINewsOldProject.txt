@@ -9,3 +9,5 @@ recentfile5	\Eric\Main\AINewsOld\URLParse.java
 recentfile6	\Eric\Main\AINewsOld\URLFileDictionary.java
 recentfile7	\Eric\Main\AINewsOld\URLFile.java
 recentfile8	\Eric\Main\AINewsOld\HtmlFile.java
+recentfile9	\Eric\Main\AINewsOld\ECTime.java
+recentfile10	\Eric\Main\AINewsOld\AnalyzeNewLinks.java

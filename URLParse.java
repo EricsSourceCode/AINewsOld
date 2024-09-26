@@ -3,6 +3,10 @@
 
 
 
+// isBadLink() checks for deeper levels.
+
+
+
 public class URLParse
   {
   private MainApp mApp;
@@ -434,9 +438,9 @@ public class URLParse
 
   public boolean isBadLink( StrA link )
     {
-    if( !( baseURL.endsWith( 
+    if( !( baseURL.endsWith(
               new StrA( "foxnews.com/" )) ||
-           baseURL.endsWith( 
+           baseURL.endsWith(
               new StrA( "msnbc.com/" ))))
       return true; // Don't want deeper levels.
 
